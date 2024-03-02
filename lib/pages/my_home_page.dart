@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation/pages/second_page.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -64,6 +65,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: const Text(
                   "Show Overlay",
+                  style: TextStyle(color: Colors.white),
+                )),
+            const SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purpleAccent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10))),
+                onPressed: () async {
+                  context.loaderOverlay.show();
+                  await Future.delayed(Duration(seconds: 5));
+                  context.loaderOverlay.hide();
+                },
+                child: const Text(
+                  "Loader Overlay",
                   style: TextStyle(color: Colors.white),
                 )),
           ],
